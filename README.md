@@ -1,10 +1,10 @@
 # flask_challenge
 
 # challenge
-# Para implementar sobre el directorio base 
-# sudo docker compose build
-# sudo docker compose up
-# endpoints de prueba /online_status y /api_docs
+#Para implementar sobre el directorio base 
+#sudo docker compose build
+#sudo docker compose up
+#endpoints de prueba /online_status y /api_docs
 
 0) Listado de archivos:  
 
@@ -12,7 +12,7 @@ directorio base (Docker necesario):
 docker-compose.yml
 
 directorio web (Aplicacion):
-app.py : Contiene la aplicacion Flask, utiliza tools.py y table_scripts.py
+app.py
 challenge.db
 table_scripts.py
 tools.py
