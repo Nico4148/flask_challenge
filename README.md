@@ -89,49 +89,20 @@ CarreerInscriptionCode Status StatusDate
 numérico numérico fecha  
 #Tabla Estado de inscricpión de carrera: Corresponde al historial de la inscri`ción de un estudiante en una carrera (inscripto, en curso, abandono, completado).  
   
-2) Comandos de inrterfaz con el servidor:  
-A través de la línea de comandos se puede consultar por un estudiante en particular y se puede generar un nuevo estudiante de la siguiente forma:  
-  
-2.1) Consulta de estudiante particular (ejemplo DNI 95562304; servidor en IP 192.168.0.251):  
-curl http://192.168.0.251/cha_api_get_student_by_id/95562304  
-Respuesta del servidor JSON si no existe:  
-{"status":200,"student_data":"not found"}  
-  
-Respuesta del servidor JSON si existe:  
-{"status":200,"student_data":"(95562304, 'Nicolas Bernal', 'nicobernal187@gmail.com', 'Bernardo Houssay 1042', 1154711031, '1989-12-18')"}  
-  
-2.2) Creación de estudiante nuevo:  
-orden de los datos y separados por '_' : Documento_Nombre_Apellido_email_dirección_teléfono_fechaDeNacimiento  
-Validaciones:  
--Documento: debe ser numérico y de 8 dígitos.  
--Nombre: cada caracter debe ser no numérico.  
--Apellido: cada caracter debe ser no numérico.  
--Email: debe contener símbolo '@'.  
--Dirección: (sin validación, en este caso no se permiten espacios en la dirección).  
--Teléfono: Debe ser numérico y de 10 dígitos.  
--Fecha de nacimiento: (sin validación)  
-curl http://192.168.0.251/cha_api_create_student/95473189_maria_castillo_mariacastillotest@gmail_mariacastilloaddress_1122223333_1989-12-18  
-  
-Respuesta del servidor si ya existe se creó el usuario:  
-{"status":200,"student_data":"new student saved"}  
-  
-Respuesta del servidor si ya existe el usuario:  
-{"status":200,"student_data":"error student 95473188 allready exists"}  
-  
-Respuesta del servidor si no valida algún cantidad de datos enviados:  
-{"status":200,"student_data":"error data lenght"}  
-  
-Respuesta del servidor si no valida código de estudiante:  
-{"status":200,"student_data":"error student code"}  
-  
-Respuesta del servidor si no valida nombre del estudiante:  
-{"status":200,"student_data":"error student name"}  
-  
-Respuesta del servidor si no valida apellido del estudiante:  
-{"status":200,"student_data":"error student last name"}  
-  
-Respuesta del servidor si no valida email del estudiante:  
-{"status":200,"student_data":"error student email"}  
-  
-Respuesta del servidor si no valida teléfono del estudiante:  
-{"status":200,"student_data":"error student phone"}  
+2) Comando de interfaz:
+Ver JSON de ejemplos en endpoint /api_docs
+endpoint /student_data metodo GET
+enviar JSON { "id": 95562304 } para consultar por el Student de ID 95562304 el servidor contesta en formato JSON.
+
+endpoint /student_data metodo POST
+enviar JSON {    "Code":95562304,
+"Name":"Nico",
+"LastName": "Bernal",
+"Email": "nicobernal187@gail.com",
+"Address": "Bernardo Houssay 1042",
+"Phone": 1154711031,
+"DateOfBirth": "1989-12-18" 
+}    
+para definir un nuevo Student, el servidor contesta en formato JSON.
+
+Ya existen las tablas, se dejo disponible de igual forma el endpoint para ejecutar el script que las genera, el script posee try except en caso se intente crear tablas que ya existen.
