@@ -91,6 +91,7 @@ numérico numérico fecha
   
 2) Comando de interfaz:
 Ver JSON de ejemplos en endpoint /api_docs
+
 endpoint /student_data metodo GET
 enviar JSON { "id": 95562304 } para consultar por el Student de ID 95562304 el servidor contesta en formato JSON.
 
